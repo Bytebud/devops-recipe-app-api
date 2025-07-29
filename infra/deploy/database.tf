@@ -6,7 +6,7 @@ resource "aws_db_subnet_group" "main" {
   name = "${local.prefix}-main"
   subnet_ids = [
     aws_subnet.private_a.id,
-    aws_subnet.private_b.id,
+    aws_subnet.private_b.id
   ]
 
   tags = {
@@ -48,6 +48,6 @@ resource "aws_db_instance" "main" {
   vpc_security_group_ids     = [aws_security_group.rds.id]
 
   tags = {
-    Name = "${local.prefix}-db-instance"
+    Name = "${local.prefix}-main"
   }
 }
