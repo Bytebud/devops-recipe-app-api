@@ -10,7 +10,7 @@ resource "aws_ecr_repository" "app" {
   image_scanning_configuration {
     # NOTE: This is not recommended for production, but useful for development
     # Update this to `true` for production and real deployment
-    scan_on_push = true
+    scan_on_push = false
   }
 }
 
@@ -22,6 +22,6 @@ resource "aws_ecr_repository" "proxy" {
   image_scanning_configuration {
     # NOTE: This is not recommended for production, but useful for development
     # Update this to `true` for production and real deployment
-    scan_on_push = true
+    scan_on_push = false
   }
 }
