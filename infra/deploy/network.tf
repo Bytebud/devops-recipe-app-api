@@ -11,7 +11,6 @@ resource "aws_vpc" "main" {
 #########################################################
 # Internet Gateway needed for inbound access to the ALB #
 #########################################################
-
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
@@ -20,11 +19,9 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
-
 ##################################################
 # Public subnets for load balancer public access #
 ##################################################
-
 resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.1.1.0/24"
@@ -54,10 +51,6 @@ resource "aws_route" "public_internet_access_a" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.main.id
 }
-
-#######################################
-# Repeat for  public subnets - b side #
-#######################################
 
 resource "aws_subnet" "public_b" {
   vpc_id                  = aws_vpc.main.id
@@ -89,11 +82,9 @@ resource "aws_route" "public_internet_access_b" {
   gateway_id             = aws_internet_gateway.main.id
 }
 
-
 ############################################
-# Private subnets for internal access only #
+# Private Subnets for internal access only #
 ############################################
-
 resource "aws_subnet" "private_a" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "10.1.10.0/24"
@@ -114,10 +105,9 @@ resource "aws_subnet" "private_b" {
   }
 }
 
-
-#######################################################################
-# Endpoints to allow ECS to access ECR, CloudWatch and System Manager #
-#######################################################################
+#########################################################################
+## Endpoints to allow ECS to access ECR, CloudWatch and Systems Manager #
+#########################################################################
 
 resource "aws_security_group" "endpoint_access" {
   description = "Access to endpoints"

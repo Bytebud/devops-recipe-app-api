@@ -1,6 +1,6 @@
-#########################################################
-# Create IAM roles and policies for the Terraform setup #
-#########################################################
+#######################################################################
+# Create IAM user and policies for Continuous Deployment (CD) account #
+#######################################################################
 
 resource "aws_iam_user" "cd" {
   name = "recipe-app-api-cd"
@@ -10,9 +10,9 @@ resource "aws_iam_access_key" "cd" {
   user = aws_iam_user.cd.name
 }
 
-###########################################################
-# Policy for Terraform backend to S3 and Dynamo DB access #
-###########################################################
+#########################################################
+# Policy for Teraform backend to S3 and DynamoDB access #
+#########################################################
 
 data "aws_iam_policy_document" "tf_backend" {
   statement {
@@ -29,7 +29,6 @@ data "aws_iam_policy_document" "tf_backend" {
       "arn:aws:s3:::${var.tf_state_bucket}/tf-state-deploy-env/*"
     ]
   }
-
   statement {
     effect = "Allow"
     actions = [
@@ -90,7 +89,6 @@ resource "aws_iam_user_policy_attachment" "ecr" {
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.ecr.arn
 }
-
 
 #########################
 # Policy for EC2 access #
@@ -183,5 +181,3 @@ resource "aws_iam_user_policy_attachment" "rds" {
   user       = aws_iam_user.cd.name
   policy_arn = aws_iam_policy.rds.arn
 }
-
-

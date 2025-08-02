@@ -1,6 +1,6 @@
-##################################################
-# Create ECR repository for storig Docker images #
-##################################################
+#############################################
+# Create ECR repos for storig Docker images #
+#############################################
 
 resource "aws_ecr_repository" "app" {
   name                 = "recipe-app-api-app"
@@ -8,8 +8,7 @@ resource "aws_ecr_repository" "app" {
   force_delete         = true
 
   image_scanning_configuration {
-    # NOTE: This is not recommended for production, but useful for development
-    # Update this to `true` for production and real deployment
+    # NOTE: Update to true for real deployments.
     scan_on_push = false
   }
 }
@@ -20,8 +19,7 @@ resource "aws_ecr_repository" "proxy" {
   force_delete         = true
 
   image_scanning_configuration {
-    # NOTE: This is not recommended for production, but useful for development
-    # Update this to `true` for production and real deployment
+    # NOTE: Update to true for real deployments.
     scan_on_push = false
   }
 }

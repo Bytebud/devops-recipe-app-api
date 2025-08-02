@@ -4,7 +4,7 @@ variable "tf_state_bucket" {
 }
 
 variable "tf_state_lock_table" {
-  description = "Name of the DynamoDB table for TF state locking"
+  description = "Name of DynamoDB table for TF state locking"
   default     = "devops-recipe-app-api-tf-lock"
 }
 

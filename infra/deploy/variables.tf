@@ -1,5 +1,5 @@
 variable "prefix" {
-  description = "Prefix for all resources in AWS"
+  description = "Prefix for resources in AWS"
   default     = "raa"
 }
 
@@ -9,7 +9,7 @@ variable "project" {
 }
 
 variable "contact" {
-  description = "contact email for tagging resources"
+  description = "Contact email for tagging resources"
   default     = "sky.sravan@gmail.com"
 }
 
