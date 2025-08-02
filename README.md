@@ -229,3 +229,4 @@ Or find them below:
 test 123
 
 Update num 001 dated 19-07-2025
+Made s3 bucket access: public (though not recommended)
